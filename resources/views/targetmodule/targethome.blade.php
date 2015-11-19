@@ -99,13 +99,14 @@
       @foreach($userdata as $val)
      <tr>
       @foreach($val as $key=>$xx)
+     
        <?php if($key=='variance' ) {
                         if($xx<0)
                           $color='red';
                         else
                           $color='green';
 
-                      ?><td style="color:<?php echo $color; ?>"><?php   echo $xx ?></td><?php
+                      ?><td style="color:<?php echo $color; ?>;text-align:right"><?php   echo $xx ?></td><?php
        } 
        else 
        {
