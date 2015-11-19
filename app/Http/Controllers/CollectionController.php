@@ -77,15 +77,6 @@ class CollectionController extends Controller
                 $payment->date = $insertPayment['date'][$i];
                 $payment->adjust_amount = $insertPayment['adjustmentamount'][$i];
                 $payment->adjust_mode= $adjust_mode;
-                 // $data[] = [
-                 //      'invoice_id' => $insertPayment['invoiceid'],
-                 //      'recieved_amount' => $insertPayment['recieved_amount'][$i],
-                 //      'refno' => $insertPayment['ref_no'][$i],
-                 //      'date' => $insertPayment['date'][$i],
-                 //      'adjust_mode' => $adjust_mode,
-                 //      'adjust_amount' => $insertPayment['adjustmentamount'][$i]
-                 //  ];
-
                 $payment->save();
 
          }
@@ -102,6 +93,10 @@ class CollectionController extends Controller
           return redirect('collection/payment/'.$insertPayment['invoiceid'].'');
 
         }
-
+		
+		public function postComments(){
+			
+			
+		}
           //dd($insertPayment); 
  }
