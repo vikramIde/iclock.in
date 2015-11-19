@@ -177,12 +177,13 @@
                                         <div class="tab-pane" id="messages">
                                            </br>
                                             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-                                                                <thead style="color:#fff;background-color:#000">
+                                                     <thead style="color:#fff;background-color:#000">
                                                                     <tr>
                                                                         <td>S.no</td>
                                                                         <td>Emp Name</td>
                                                                         <td>Emp Id</td>
                                                                         <td>Department</td>
+                                                                         <td>Category</td>
                                                                         <td>Actions</td>
                                                                     </tr>
                                                                 </thead>
@@ -191,27 +192,44 @@
                                                                   <tr>
                                                                   
                                                                   <td>{{$emp->emp_id}}</td>
-                                                                  <td>{{$emp->emp_name}}</td>
+                                                                  <td  style="width:150px">{{$emp->emp_name}}</td>
                                                                   <td>{{$emp->emp_ide_id}}</td>
-                                                                  <td>{{$emp->emp_department}}</td>
+                                                                  <td  style="width:150px">{{$emp->emp_department}}</td>
+                                                                  <td  style="width:150px">{{$emp->cat}}</td>
                                                                   
                                                                   <td class="center">
                                                                                
                 <a class="btn btn-info employee" data-toggle="modal"  data-target="#myModal" id="action_<?php echo $emp->emp_id ?>"  href="">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+               
                 Edit
             </a>
-         <a class="btn btn-danger empdel" href="#" data-toggle="modal"  id="action_<?php echo $emp->emp_id ?>" data-target="#empdelModal">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
+            <?php
+            if($emp->emp_status=='Active')
+            {
+              ?>
+               <span class="btn btn-success">
+               
+               {{$emp->emp_status}}
+            </span>
+
+              <?php
+            }else {
+
+              ?>
+           <span class="btn btn-danger">
+               {{$emp->emp_status}}
+            </span>
+              <?php
+            
+            }
+            ?>
+        
                                                                             </td>
                                                                   
                                                                 </tr>
                                                                 @endforeach
 
                                                                 </tbody>
-
                                                                   <script type="text/javascript">
 
 
@@ -481,13 +499,13 @@ $('.event').click(function(e) {
 
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-                <div class="modal-dialog">
+                      <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">×</button>
                             <h3>Edit Employee</h3>
                         </div>
-                        <form action="{{ url('/update/update') }}" method="post"  enctype="multipart/form-data">
+                        <form action="{{ url('/updateemployee/updateemployee') }}" method="post"  enctype="multipart/form-data">
                            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                         <div class="modal-body">
                              <table width="100%"  class="table">
@@ -495,7 +513,13 @@ $('.event').click(function(e) {
                               <tr><td>Name</td><td>  <input type="text" class="form-control" name="emp_name" id="bookName" value=""/></td></tr>
                               <tr><td>Id</td><td><input type="text" class="form-control" name="emp_id" id="bookemp_id" value=""/></td></tr>
                               <tr><td>Department</td><td><input type="text" class="form-control" name="emp_dept" id="bookDept" value=""/></td></tr>
-                              <tr><td>Employee Staus</td><td><input type="text" name="emp_status" class="form-control"></td></tr>
+                             <tr><td>Employee Staus</td><td><select name="emp_status" class="form-control">
+                              <option>--Select--</option>
+                              <option value="Active"> Active</option>
+                               <option value=" Resigned / Cessation"> Resigned / Cessation</option>
+                                <option value="Transferred to non sales"> Transferred to non sales</option>
+                              
+                            </select></td></tr>
                              </table>
                         </div>
                         <div class="modal-footer">

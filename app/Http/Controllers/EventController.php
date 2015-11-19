@@ -363,5 +363,24 @@ return redirect('home1');
     
 }
 
+public function postUpdateemployee( Request $request) {
+ $emp_id_d=Input::get('emp_id_d');
+
+  $post = Input::get();
+$i=Employee::where('emp_id',$emp_id_d)
+            ->update(array(
+              'emp_name' => $post['emp_name'],
+              'emp_ide_id' => $post['emp_id'],'emp_status' => $post['emp_status'],
+              'emp_department' => $post['emp_dept'])
+            );
+            if($i>0){
+              $request->session()->flash('alert-success', 'Updated Success!');
+return redirect('home1');
+ 
+            }
+
+    
+}
+
 
 }

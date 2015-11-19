@@ -122,7 +122,7 @@
       <option value="">--Select--</option>
 
      @foreach($categories as $cat)
-<option value="{{$cat->event}}">{{$cat->event}}</option>
+<option value="{{$cat->eventcode}}">{{$cat->event}}</option>
  @endforeach
  </select>
 </td>
@@ -142,7 +142,7 @@
   </select></td>
 </tr>
 <tr>
-  <td>Target Date</td>
+  <td>Due date for Completion</td>
   <td><input type="text" class="form-control dp dob" name="target_date"></td>
 </tr>
 <tr>
@@ -238,10 +238,17 @@
 
                                        
                                            <td style="text-align:right">{{$emptarget->Targetvalue}}</td>
+                                           <td>{{$emptarget->Targetassigned}}</td>
                                            <td>{{$emptarget->Targetdate}}</td>
-                                           <td>Due</td>
 
-                                           <td>days</td>
+                                           <td><?php
+                                           
+                                            $diff=strtotime($emptarget->Targetdate)-strtotime($emptarget->Targetassigned);
+                                            $days=floor($diff/(60*60*24));
+                                            echo $days;
+
+                                           
+                                           ?></td>
                                               <td class="center">
                                                                                
                 <a class="btn btn-info employee" data-toggle="modal"  data-target="#myModal" id="action_<?php echo $emptarget->Id ?>"  href="">
@@ -326,17 +333,17 @@ $('.employee').click(function(e) {
                             <button type="button" class="close" data-dismiss="modal">×</button>
                             <h3>Edit Employee</h3>
                         </div>
-                        <form action="{" method="post"  enctype="multipart/form-data">
+                        <form action="{{ url('/updatetargetassign/updatetargetassign') }}" method="post"  enctype="multipart/form-data">
                            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                         <div class="modal-body">
                              <table width="100%"  class="table">
-                                 <input type="text" name="emp_id_d" id="bookId"  value=""/>
-                              <tr><td>Event Code</td><td>  <input type="text" class="form-control" name="eventcode" id="eventcode" value=""/></td></tr>
-                              <tr><td>Event Name</td><td><input type="text" class="form-control" name="eventname" id="eventname" value=""/></td></tr>
-                              <tr><td>Emp Id</td><td><input type="text" class="form-control" name="employeeid" id="employeeid" value=""/></td></tr>
+                                 <input type="hidden" name="targetid" id="bookId"  value=""/>
+                              <tr><td>Event Code</td><td>  <input type="text" class="form-control" name="eventcode" id="eventcode" value="" disabled/></td></tr>
+                              <tr><td>Event Name</td><td><input type="text" class="form-control" name="eventname" id="eventname" value="" disabled/></td></tr>
+                              <tr><td>Emp Id</td><td><input type="text" class="form-control" name="employeeid" id="employeeid" value="" disabled/></td></tr>
                              <tr><td>Target Assigned</td><td><input type="text" class="form-control " name="targetvalue" id="targetvalue" value=""/></td></tr>
-                               <tr><td>Date Of Assign</td><td><input type="text" class="form-control dob" name="dateofassign" id="dateofassign" value=""/></td></tr>
-                                  <tr><td>Due Date for Completion</td><td><input type="text" class="form-control dob" name="duedate" id="duedate" value=""/></td></tr>
+                               <tr><td>Date Of Assign</td><td><input type="text" class="form-control dob" name="dateofassign" id="dateofassign" value="" /></td></tr>
+                                  <tr><td>Due Date for Completion</td><td><input type="text" class="form-control " name="duedate" id="duedate" value=""/></td></tr>
                              </table>
                         </div>
                         <div class="modal-footer">

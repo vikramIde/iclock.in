@@ -57,7 +57,7 @@ foreach ($targets as $target) {
         $key++;
 }
       
-      return View('targetmodule/assigntarget')->with(array('categories'=>$categories,'employee'=>$employee,'userdata'=>$userData,'targets'=>$targets));
+      return View('targetmodule/assigntarget')->with(array('categories'=>$categories,'employee'=>$employee,'userdata'=>$userData,'targets'=>$targets,'eventtable'=> $categories ));
     }
      
    public function postTargetassign( Request $request ) {
@@ -73,22 +73,29 @@ foreach ($targets as $target) {
 
     $validator = Validator::make(Input::all(), $rules);
 
+
     if ($validator->fails())
     {
         return redirect('targetmodule/assigntarget')->withErrors($validator);
     }else {
    $data = Input::get();
+    $now=date('d-m-Y');
+   
    
       $targetdata=Targetassign::where('Eventname',$data['eventname'])->where('Employeeid',$data['employeeid'])->get();
+
+    
       // dd(count($targetdata)) ;
       if(count($targetdata)==0){
          $c= new Targetassign();
-     
+       
      $c->Employeeid = $data['employeeid'];
-      $c->Eventname  = $data['eventname'];
+      $c->Eventcode  = $data['eventname'];
       $c->Targetvalue = $data['target_value'];
       $c->Currency  = $data['currency'];
        $c->Targetdate  = $data['target_date'];
+       $c->Targetassigned=$now;
+
         $c->Modeoftarget  = $data['modeoftarget'];
 
        $c->save();
@@ -109,6 +116,26 @@ foreach ($targets as $target) {
         // 
     
 }
+
+ public function postUpdatetargetassign( Request $request ) {
+  $tid=Input::get('targetid');
+
+  
+    $now=date('d-m-Y');
+  
+  $post = Input::get();
+$i=Targetassign::where('Id',$tid)
+            ->update(array(
+              'Targetvalue' => $post['targetvalue'],
+              'Targetdate' => $post['duedate'])
+            );
+            if($i>0){
+              $request->session()->flash('alert-success', 'Target Has Been Updated Successfully');
+      return redirect('targetmodule/assigntarget');
+ 
+            }
+
+  }
 
     
 

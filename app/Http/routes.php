@@ -38,6 +38,7 @@ Route::controller('delevent', 'EventController');
 Route::controller('eventupdate', 'EventController');
 Route::controller('invoice', 'EventController');
 Route::controller('home1', 'EventController');
+Route::controller('updateemployee','EventController');
 Route::controller('home2', 'ViewController');
 Route::controller('dealsclosed', 'DealsclosedController');
 
@@ -64,6 +65,7 @@ Route::controller('targetmodule/eventdeal','EventdealController');
 Route::controller('addemployee','TargetController');
 Route::controller('dealinsert','EventdealController');
 Route::controller('targetassign','AssigntargetController');
+Route::controller('updatetargetassign','AssigntargetController');
 Route::controller('updateadmin','AdminController');
 // Route::post('variancecard','TargetController@variancecard');
 

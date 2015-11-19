@@ -310,7 +310,7 @@ $(function () {
                                                                         <div class="header">
                                                                         
                                                                             <small class="pull-right text-muted">
-                                                                                <i class="fa fa-clock-o fa-fw"></i> 																				{{$comment->date}}
+                                                                                <i class="fa fa-clock-o fa-fw"></i> {{$comment->date}}
                                                                             </small>
                                                                         </div>
                                                                             <p>
@@ -326,19 +326,22 @@ $(function () {
                                                         </div>
                                                        
                                                         <!-- /.panel-body -->
+                                                         <form method="POST" action="{{ url('/collection/comment') }}">
+                                                              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                               <input type="hidden" value="<?php  echo $today;  ?>"  name="date1"  >
+                                                               <input type="hidden" name="invoiceid" value="<?php echo $data->Id ?>" /> 
                                                         <div class="panel-footer">
                                                             <div class="input-group">
                                                               
-                                                              <form class="form-horizontal" role="form" method="POST" action="{{ url('/collection/comment') }}">
-                                                              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                               <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
-                                                               <input type="hidden" name="invoiceid" value="<?php echo $data->Id ?>" /> 
-                                                                <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
+                                                             
+                                                                <textarea class="form-control" rows="1" cols="30" name="comment" ></textarea>
                                                                 <span class="input-group-btn">
                                                                     <input type="submit" class="btn btn-info" value="Submit Comment">
                                                                 </span>
+                                                                
                                                             </div>
                                                         </div>
+                                                          </form>  
                                                        
                                                     </div>
                                       
@@ -371,7 +374,7 @@ $(function () {
                                          
                                         </div>
                                     </div>
-                                </form>        
+                                    
         					</div>
                         </div>
                     </div>
