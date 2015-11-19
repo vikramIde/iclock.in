@@ -296,60 +296,60 @@ $(function () {
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="chat-panel panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i>
-                            Comments
-                   
-                        </div>
-                          
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <?php if(count($data->comments) > 0) { ?>
-                            @foreach($data->comments as $comment)
-                            <ul class="chat">
-                             
-                                <li class="left clearfix">
-                                  
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                        
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> {{$comment->date}}
-                                            </small>
-                                        </div>
-                                        <p>
-                                            {{$comment->text}}
-                                        </p>
-                                    </div>
-                                </li>
-                               
+                                                        <div class="panel-heading">
+                                                            <i class="fa fa-comments fa-fw"></i>
+                                                            Comments
+                                                   
+                                                        </div>
+                                                          
+                                                        <!-- /.panel-heading -->
+                                                        <div class="panel-body">
+                                                            <?php if(count($data->comments) > 0) { ?>
+                                                            @foreach($data->comments as $comment)
+                                                            <ul class="chat">
+                                                             
+                                                                <li class="left clearfix">
+                                                                  
+                                                                    <div class="chat-body clearfix">
+                                                                        <div class="header">
+                                                                        
+                                                                            <small class="pull-right text-muted">
+                                                                                <i class="fa fa-clock-o fa-fw"></i> 																				{{$comment->date}}
+                                                                            </small>
+                                                                        </div>
+                                                                            <p>
+                                                                                {{$comment->text}}
+                                                                            </p>
+                                                                    </div>
+                                                                </li>
+                                                               
+                                                                
+                                                               
+                                                            </ul>
+                                                               @endforeach
+                                                                                 <?php } 
+                                                                                      else echo "No comments available";
+                                                                                 ?>
+                                                        </div>
+                                                       
+                                                        <!-- /.panel-body -->
+                                                        <div class="panel-footer">
+                                                            <div class="input-group">
+                                                              <?php
+                                                             
+                                 date_default_timezone_set('Asia/Kolkata');
+                                 $today=date('d-m-Y g:i a');
                                 
-                               
-                            </ul>
-                               @endforeach
-                                                 <?php } 
-                                                      else echo "No comments available";
-                                                 ?>
-                        </div>
-                       
-                        <!-- /.panel-body -->
-                        <div class="panel-footer">
-                            <div class="input-group">
-                              <?php
-                             
- date_default_timezone_set('Asia/Kolkata');
- $today=date('d-m-Y g:i a');
-
-                              ?>
-                               <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
-                                <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
-                                <span class="input-group-btn">
-                                    <input type="submit" class="btn btn-info" value="Submit Comment">
-                                </span>
-                            </div>
-                        </div>
-                        <!-- /.panel-footer -->
-                    </div>
+                                                              ?>
+                                                               <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
+                                                                <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
+                                                                <span class="input-group-btn">
+                                                                    <input type="submit" class="btn btn-info" value="Submit Comment">
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.panel-footer -->
+                                                    </div>
                                       
                                             </div>
                                             <div class="col-md-6">

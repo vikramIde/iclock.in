@@ -54,13 +54,26 @@ class CollectionController extends Controller
          return View('collectionmodule/payment')->with(array('invoice'=>$invoice));
    
  }
+ 
+  public function saveComment($comments,$date,$invoiceid){
+  		$comment= new comments();
+		
+		// $result = paymentrecieved::create($data);
 
+          $comment->text = ucfirst(strtolower($comments));
+          $comment->date = $date;
+          $comment->invoice_id = $invoiceid;
+          $comment->save();
+		
+  
+  }
+  
   public function postPayment(PaymentRequest $request){
 
           $insertPayment=Input::get();
 
           $payment= new paymentrecieved();
-          $comment= new comments();
+          
 
          $data=array();
 
@@ -82,11 +95,7 @@ class CollectionController extends Controller
          }
 
          // $result = paymentrecieved::create($data);
-
-          $comment->text = ucwords(strtolower($insertPayment['comment']));
-          $comment->date = $insertPayment['date1'];
-          $comment->invoice_id = $insertPayment['invoiceid'];
-          $comment->save();
+		  $this->saveComment($insertPayment['comment'],$insertPayment['date1'],$insertPayment['invoiceid']);
 
 
           $request->session()->flash('alert-success', 'Payment Has Been inserted Successfully');
@@ -94,9 +103,10 @@ class CollectionController extends Controller
 
         }
 		
-		public function postComments(){
-			
-			
-		}
+	public function postComments(){
+			$insertcomment = Input::get();
+			$this->saveComment($insertcomment['comment'],$insertcomment['date'],$insertcomment['invoiceid']);	
+		
+	}
           //dd($insertPayment); 
  }
