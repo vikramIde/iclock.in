@@ -278,9 +278,14 @@ $(function () {
 
                                                  
                                                 </table>
-                                                <center>
+                                                
+                                                 <h4>Payment comment *</h4>
+                                                <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
+                                               
                                                 <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
-                                           <input type="submit" class="btn btn-info" value="Submit Payment"></center></form> 
+                                                <center>
+                                           <input type="submit" class="btn btn-info" value="Submit Payment"></center>
+                                           </form> 
                                                  
                                                 <h3></h3>
 
@@ -325,6 +330,7 @@ $(function () {
                                                             <div class="input-group">
                                                               
                                                               <form class="form-horizontal" role="form" method="POST" action="{{ url('/collection/comment') }}">
+                                                              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                                <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
                                                                 <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
                                                                 <span class="input-group-btn">
