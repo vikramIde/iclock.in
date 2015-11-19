@@ -345,6 +345,7 @@
         $('#test').click(function () {
 
               date1_week= date1;
+			  alert(date1_week.getUTCMonth());
               date2_week= date2;
               var x_axis = [];
               var Target =[];

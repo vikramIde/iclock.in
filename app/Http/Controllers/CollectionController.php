@@ -97,7 +97,6 @@ class CollectionController extends Controller
          // $result = paymentrecieved::create($data);
 		  $this->saveComment($insertPayment['comment'],$insertPayment['date1'],$insertPayment['invoiceid']);
 
-
           $request->session()->flash('alert-success', 'Payment Has Been inserted Successfully');
           return redirect('collection/payment/'.$insertPayment['invoiceid'].'');
 
