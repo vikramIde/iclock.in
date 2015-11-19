@@ -107,7 +107,13 @@ $(function () {
                                     <div id="myTabContent" class="tab-content">
                                         <div class="tab-pane" id="paymentDiv">
                                           </br>
-                                    <div class="row">
+                                          <?php
+                                                             
+												 date_default_timezone_set('Asia/Kolkata');
+												 $today=date('d-m-Y g:i a');
+                                
+                                              ?>
+               	<div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -197,24 +203,7 @@ $(function () {
                     </div>
                 </div>
             </div>
-                                        <!--   	<table  class="table table-striped table-bordered bootstrap-datatable datatable responsive" style="width:50%;" align="center">
-												                            <tr >
-                                                        <th>Company Name </td>
-                                                        <td><?php echo $data->Companyname ?></td>
-                                                    </tr>
-                                                    <tr >
-                                                        <th>Event Name</td>
-                                                        <td><?php echo $data->EventName ?></td>
-                                                    </tr>
-                                                    <tr >
-                                                        <th>Sales Rep </td>
-                                                        <td><?php echo $data->RepresentativeNo ?></td>
-                                                    </tr>
-                                                    <tr >
-                                                        <th>Total Amount</td>
-                                                        <td><?php echo $data->GrandTotal ?></td>
-                                                    </tr>
-                                          	</table> -->
+                                       
                                           <div class="ch-container">
 
                                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/collection/payment') }}">
@@ -289,7 +278,9 @@ $(function () {
 
                                                  
                                                 </table>
-                                                <center> <input type="submit" class="btn btn-info" value="Submit Payment"></center>
+                                                <center>
+                                                <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
+                                           <input type="submit" class="btn btn-info" value="Submit Payment"></center></form> 
                                                  
                                                 <h3></h3>
 
@@ -322,9 +313,6 @@ $(function () {
                                                                             </p>
                                                                     </div>
                                                                 </li>
-                                                               
-                                                                
-                                                               
                                                             </ul>
                                                                @endforeach
                                                                                  <?php } 
@@ -335,12 +323,8 @@ $(function () {
                                                         <!-- /.panel-body -->
                                                         <div class="panel-footer">
                                                             <div class="input-group">
-                                                              <?php
-                                                             
-                                 date_default_timezone_set('Asia/Kolkata');
-                                 $today=date('d-m-Y g:i a');
-                                
-                                                              ?>
+                                                              
+                                                              <form class="form-horizontal" role="form" method="POST" action="{{ url('/collection/comment') }}">
                                                                <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
                                                                 <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
                                                                 <span class="input-group-btn">
@@ -348,7 +332,7 @@ $(function () {
                                                                 </span>
                                                             </div>
                                                         </div>
-                                                        <!-- /.panel-footer -->
+                                                       
                                                     </div>
                                       
                                             </div>
