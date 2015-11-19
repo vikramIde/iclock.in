@@ -103,10 +103,11 @@ class CollectionController extends Controller
 
         }
 		
-	public function postComments(){
+	public function postComment(){
 			$insertcomment = Input::get();
 			$this->saveComment($insertcomment['comment'],$insertcomment['date'],$insertcomment['invoiceid']);	
-		
+			$request->session()->flash('alert-success', 'Comment inserted Successfully');
+          	return redirect('collection/payment/'.$insertPayment['invoiceid'].'');
 	}
           //dd($insertPayment); 
  }

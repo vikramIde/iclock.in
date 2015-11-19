@@ -77,7 +77,9 @@ Route::get('targetmodule/logout',function(){
 	Auth::logout();
 	return Redirect::to('targetmodule/target');
 });
+
 Route::controller('collection','CollectionController');
+
 //Route::get('collection','CollectionController@getIndex');
 
 // Route::get('collection', function () {
