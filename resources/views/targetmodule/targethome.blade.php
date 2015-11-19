@@ -85,11 +85,13 @@
     <tr>
       <td>Event Code</td>
         <td>Event Name</td>
-       
+       <td>Currency</td>
         <td>Target Value</td>
+        <td>Target Start Date</td>
+          <td>Target End Date</td>
         <td>Acheived</td>
          <td>Variance</td>
-          <td>Currency</td>
+          
           <td>Days Left</td>
         
         <!-- <td>Days Left</td> -->
@@ -99,8 +101,8 @@
       @foreach($userdata as $val)
      <tr>
       @foreach($val as $key=>$xx)
-     
-       <?php if($key=='variance' ) {
+      
+       <?php if($key=='variance') {
                         if($xx<0)
                           $color='red';
                         else
@@ -113,10 +115,12 @@
          ?><td ><?php   echo $xx ?></td> <?php } ?>
          
        @endforeach
+
      </tr>
      @endforeach
   </tbody>
  </table>
+
  
                                         </div>
                                          <div class="tab-pane" id="inv">

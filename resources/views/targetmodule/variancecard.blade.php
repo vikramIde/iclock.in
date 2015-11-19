@@ -371,7 +371,7 @@
                   i = i + 1;
                   mWeek = "Week "+ i ;
                   x_axis.push(mWeek);Target.push(TargetPerweek);Achieved.push(achieved);
-                  str = str + "<tr><td>"+ mWeek +"</td><td>"+date1_week.getDate()+"-"+(date1_week.getUTCMonth()+1)+"-"+date1_week.getFullYear()+" - "+next_week.getDate()+"-"+(next_week.getUTCMonth()+1)+"-"+next_week.getFullYear()+"</td><td>" + TargetPerweek + "</td><td> " + achieved + "</td></tr>";
+                  str = str + "<tr><td>"+ mWeek +"</td><td>"+date1_week.getDate()+"-"+(date1_week.getUTCMonth()+1)+"-"+date1_week.getFullYear()+" - "+next_week.getDate()+"-"+(next_week.getUTCMonth()+1)+"-"+next_week.getFullYear()+"</td><td style='text-align:right'>" + TargetPerweek + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
                   date1_week = next_week;  
               }
 
@@ -413,7 +413,7 @@
                   x_axis.push(mDay);
                   Target.push(TargetPerMonth);
                   Achieved.push(achieved);
-                  str1 = str1 + "<tr><td>"+ mDay +"</td><td>"+date1_month.getDate()+"-"+(date1_month.getUTCMonth()+1)+"-"+date1_month.getFullYear()+" - "+next_month.getDate()+"-"+(next_month.getUTCMonth()+1)+"-"+next_month.getFullYear()+"</td><td>" + TargetPerMonth + "</td><td> " + achieved + "</td></tr>";
+                  str1 = str1 + "<tr><td>"+ mDay +"</td><td>"+date1_month.getDate()+"-"+(date1_month.getUTCMonth()+1)+"-"+date1_month.getFullYear()+" - "+next_month.getDate()+"-"+(next_month.getUTCMonth()+1)+"-"+next_month.getFullYear()+"</td><td style='text-align:right'>" + TargetPerMonth + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
                   date1_month = next_month;
               }
 
@@ -453,7 +453,7 @@ $('#test2').click(function () {
         x_axis.push(mDay);
         Target.push(TargetPerday);
         Achieved.push(achieved);
-        str1 = str1 + "<tr><th>Day " + i + "</th><td>" + date1_day.getDate() + "-" + (date1_day.getUTCMonth() + 1) + "-" + date1_day.getFullYear() + "</td><td>" + TargetPerday + "</td><td> " + achieved + "</td></tr>";
+        str1 = str1 + "<tr><th>Day " + i + "</th><td>" + date1_day.getDate() + "-" + (date1_day.getUTCMonth() + 1) + "-" + date1_day.getFullYear() + "</td><td style='text-align:right'>" + TargetPerday + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
         date1_day = next_week;
     }
 

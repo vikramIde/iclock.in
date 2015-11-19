@@ -169,8 +169,9 @@
 
                                          <div class="tab-pane" id="viewall">
                                         </br>
+                                        <button id="downloadIntermidiate" class="btn btn-success" style="float:right">Download Excel</button>
 
-                                        <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                                        <table class="table table-striped table-bordered bootstrap-datatable datatable responsive" id="scorecard">
                                       <thead style="color:#fff;background-color:#000">
                                               <tr >
                                                 <td>Event Code</td>
@@ -196,7 +197,7 @@
                         else
                           $color='green';
 
-                      ?><td style="color:<?php echo $color; ?>"><?php   echo $xx ?></td><?php
+                      ?><td style="color:<?php echo $color; ?>;text-align:right"><?php   echo $xx ?></td><?php
        } 
        else 
        {
@@ -244,11 +245,11 @@
                                               <td class="center">
                                                                                
                 <a class="btn btn-info employee" data-toggle="modal"  data-target="#myModal" id="action_<?php echo $emptarget->Id ?>"  href="">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+              
                 Edit
             </a>
-            <a class="btn btn-info"href="">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+            <a class="btn btn-warning"href="">
+             
                 Print
             </a>
             
@@ -358,7 +359,21 @@ $('.employee').click(function(e) {
         <!--/.fluid-container-->
 
         <!-- external javascript -->
+          <script src="{{asset('/js/jquery.table2excel.js')}}"></script>
+<script>
+      $(function() {
+                  $("#downloadIntermidiate").click(function(){
 
+                        $("#scorecard").table2excel({
+                              exclude: ".noExl",
+                        name: "Excel Document intermediateTable"
+                        }); 
+                        
+                         });
+                 
+              
+            });
+</script>
  
         <script src="{{asset('/datepicker/js/bootstrap-datepicker.js')}}"></script>
         <link rel="stylesheet" href="{{asset('/datepicker/css/datepicker.css')}}">

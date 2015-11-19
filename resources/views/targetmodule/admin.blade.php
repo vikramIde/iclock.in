@@ -145,30 +145,30 @@
                                                                   <td  style="width:150px">{{$emp->emp_name}}</td>
                                                                   <td>{{$emp->emp_ide_id}}</td>
                                                                   <td  style="width:150px">{{$emp->emp_department}}</td>
-                                                                  <td  style="width:150px">{{$emp->emp_department}}</td>
+                                                                  <td  style="width:150px">{{$emp->cat}}</td>
                                                                   
                                                                   <td class="center">
                                                                                
                 <a class="btn btn-info employee" data-toggle="modal"  data-target="#myModal" id="action_<?php echo $emp->emp_id ?>"  href="">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+               
                 Edit
             </a>
             <?php
             if($emp->emp_status=='Active')
             {
               ?>
-               <a class="btn btn-success" href="#">
+               <span class="btn btn-success">
                
                {{$emp->emp_status}}
-            </a>
+            </span>
 
               <?php
             }else {
 
               ?>
-           <a class="btn btn-danger" href="#">
+           <span class="btn btn-danger">
                {{$emp->emp_status}}
-            </a>
+            </span>
               <?php
             
             }

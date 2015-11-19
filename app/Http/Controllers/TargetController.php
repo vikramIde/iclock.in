@@ -47,7 +47,11 @@ foreach ($targets as $target) {
                 $achieved = 0;
                  $userData[$key]['eventc']=$target->Eventcode;
                 $userData[$key]['event']=$target->Eventname;
+                   $userData[$key]['cur']= $target->Currency;
                 $userData[$key]['targetVal']=$target->Targetvalue;
+
+                  $userData[$key]['start']=$target->created_at;
+                   $userData[$key]['end']=$target->Targetdate;
 
         foreach ($deals as $deal) {
 
@@ -59,7 +63,7 @@ foreach ($targets as $target) {
 
         $userData[$key]['achieved']=$achieved;
         $userData[$key]['variance']=$achieved-$target->Targetvalue;
-        $userData[$key]['cur']= $target->Currency;
+        // $userData[$key]['cur']= $target->Currency;
 
        
       
