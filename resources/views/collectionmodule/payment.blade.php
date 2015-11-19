@@ -209,7 +209,7 @@ $(function () {
                                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/collection/payment') }}">
                                           	<h3>Payments</h3>
                         												<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        												 <input type="hidden" name="invoiceid" value="<?php echo $data->Id ?>" /> 
+                        												 <input type="hidden" name="invoiceid" value="<?php echo  $data->Id ?>" /> 
                         						<table class="table table-striped table-bordered   " id="table-data">
                                                      <thead style="color:#fff;background-color:#000;text-align:left">
 
@@ -332,6 +332,7 @@ $(function () {
                                                               <form class="form-horizontal" role="form" method="POST" action="{{ url('/collection/comment') }}">
                                                               <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                                <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
+                                                               <input type="hidden" name="invoiceid" value="<?php echo $data->Id ?>" /> 
                                                                 <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
                                                                 <span class="input-group-btn">
                                                                     <input type="submit" class="btn btn-info" value="Submit Comment">
