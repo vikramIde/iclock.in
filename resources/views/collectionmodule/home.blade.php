@@ -139,7 +139,7 @@
                                                                   
                                                                   <td>{{$inv->Id}}</td>
                                                                   <td style="width:200px">{{$inv->Companyname}}</td>
-                                                                  <td style="width:270px">{{$inv->EventName}}</td>
+                                                                  <td style="width:170px">{{$inv->EventName}}</td>
                                                                   <td>{{$inv->RepresentativeNo}}</td>
                                                                   <td style="text-align:right">{{$inv->GrandTotal}}</td>
                                                                   <td>{{$inv->CurrencyType}}</td>
