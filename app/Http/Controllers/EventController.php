@@ -19,7 +19,10 @@ use View;
 class EventController extends Controller
 {
 
-  
+  public function __construct(){
+
+    $this->middleware('role:admin1'); // replace 'collector' with whatever role you need.
+}
 
     public function getIndex(){
       $categories = Event::all();

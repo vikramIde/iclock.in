@@ -18,9 +18,12 @@ class Role
             if ($request->user()->role != $role){
 
                 if($role=="collector" || $role=="admin" )
-                return redirect('collection/login');    
-                if($role=="collector" || $role=="admin" )
-                return redirect('collection/login');    
+                return redirect('/');  
+                if($role=="admin1" || $role=="admin" )
+             return redirect('/') ; 
+            if($role=="admin2" || $role=="admin" )
+             return redirect('/') ; 
+
 
             }
 

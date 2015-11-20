@@ -20,7 +20,10 @@ class ViewController extends Controller
      *
      * @return Response
      */
+public function __construct(){
 
+    $this->middleware('role:admin2'); // replace 'collector' with whatever role you need.
+}
     
     public function getIndex(){
          $categories = Event::all();
