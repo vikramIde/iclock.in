@@ -140,10 +140,13 @@ public function getVariancecard(){
 }
 
 
-
 public function postVariancecard(){
 			$empid= Auth::user()->empid;
 			$eventName = Input::get('event');
+			dd('sdsdsad');
+			
+			
+			
 			$targets = Targetassign::where('Employeeid',$empid)->where('Eventname',$eventName)->get();
 			$variancedata=$targets;
 			$deals = Deal::where('Eventname',$eventName)->where('Empid',$empid)->get();
