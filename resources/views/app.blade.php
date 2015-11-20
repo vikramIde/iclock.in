@@ -64,14 +64,14 @@
               
 @if (Auth::guest())
 					 <!-- theme selector starts -->
-            <div class="btn-group pull-right theme-container animated tada">
+          <!--   <div class="btn-group pull-right theme-container animated tada">
                 <a href="{{ URL::to('targetmodule/targetlogin')}}"><button class="btn btn-default" >
                     <i class="glyphicon glyphicon-dashboard"></i><span
                         class="hidden-sm hidden-xs"> Target Module</span>
                   
                 </button></a>
                
-            </div>
+            </div> -->
             <!-- theme selector ends -->
 
 					@else

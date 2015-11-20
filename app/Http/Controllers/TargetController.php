@@ -65,7 +65,6 @@ foreach ($targets as $target) {
         $userData[$key]['variance']=$achieved-$target->Targetvalue;
         // $userData[$key]['cur']= $target->Currency;
 
-       
       
         $date2= strtotime(date('d-m-Y'));
 
