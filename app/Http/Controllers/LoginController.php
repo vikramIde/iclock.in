@@ -76,6 +76,24 @@ class LoginController extends Controller
             }
             
         }  
+         else 
+        if (Auth::attempt($cred) && $role->role == ''){
+            if (Auth::check()){
+                Session::put('role','');
+                Session::put('name',Auth::user()->name);
+              return redirect('targetmodule/targethome');
+            }
+            
+        } 
+        else 
+        if (Auth::attempt($cred) && $role->role == 'director'){
+            if (Auth::check()){
+                Session::put('role','director');
+                Session::put('name',Auth::user()->name);
+                return redirect('targetmodule/admin');
+            }
+            
+        } 
 
         else{
                 Session::flush();
