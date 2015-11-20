@@ -25,11 +25,11 @@ class EventController extends Controller
 }
 
     public function getIndex(){
-      $categories = Event::all();
-     $employee = Employee::all();
-      $invoice = Invoice::orderBy('Id', 'desc')->get();
-    
-      return View('home1')->with(array('categories'=>$categories,'employee'=>$employee,'invoice'=>$invoice));
+                $categories = Event::all();
+                $employee = Employee::all();
+                $invoice = Invoice::orderBy('Id', 'desc')->get();
+
+                return View('home1')->with(array('categories'=>$categories,'employee'=>$employee,'invoice'=>$invoice));
     }
 
    

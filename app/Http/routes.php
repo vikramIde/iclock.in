@@ -77,7 +77,7 @@ Route::post('targetmodule/variancecard','TargetController@postVariancecard');
 Route::get('targetmodule/logout',function(){
 	Session::flush();
 	Auth::logout();
-	return Redirect::to('targetmodule/target');
+	return Redirect::to('targetmodule');
 });
 
 Route::controller('collection','CollectionController');
@@ -88,8 +88,8 @@ Route::controller('collection','CollectionController');
 //     return view('login');
 // });
 
-Route::get('collection/logout',function(){
+Route::get('main/logout',function(){
 	Session::flush();
 	Auth::logout();
-	return Redirect::to('collection/login');
+	return Redirect::to('/');
 });

@@ -85,7 +85,7 @@
                     </button>
                     <ul class="dropdown-menu">
 
-                      <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+                      <li><a href="{{ url('targetmodule/logout') }}">Logout</a></li>
                     </ul>
                 </div>
                 <!-- user dropdown ends -->
