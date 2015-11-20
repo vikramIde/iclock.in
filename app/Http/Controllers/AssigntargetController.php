@@ -23,53 +23,52 @@ class AssigntargetController extends Controller
      * @return Response
      */
     public function getIndex(){
-         $employee = Employee::all();
-           $categories = Event::all();
-           
-    $userdetails = User::all();
-    $targets = Targetassign::all();
-    $deals = Deal::all();
-    $userData = array();
-    $key = 0 ;
+                  $employee = Employee::all();
+                  $categories = Event::all();
+
+                  $userdetails = User::all();
+                  $targets = Targetassign::all();
+                  $deals = Deal::all();
+                  $userData = array();
+                  $key = 0 ;
 
 foreach ($targets as $target) {
 
-            $achieved = 0;
-               $userData[$key]['eventcode']=$target->Eventcode;  
-                $userData[$key]['event']=$target->Eventname;
-                 $userData[$key]['employee']=$target->Employeeid;
-                
+                    $achieved = 0;
+                    $userData[$key]['eventcode']=$target->Eventcode;  
+                    $userData[$key]['event']=$target->Eventname;
+                    $userData[$key]['employee']=$target->Employeeid;
 
-                $userData[$key]['targetVal']=$target->Targetvalue;
-        foreach ($deals as $deal) {
-           // $userData[$key]['employeename']=$deal->Empname;
 
-            if($target->Eventname == $deal->Eventname)
-            {
-                $achieved = $achieved+$deal->Dealvalue;
-          }
-        }
-        $userData[$key]['achieved']=$achieved;
-        $userData[$key]['variance']=$achieved-$target->Targetvalue;
-        $userData[$key]['cur']= $target->Currency;
+                    $userData[$key]['targetVal']=$target->Targetvalue;
+                     foreach ($deals as $deal) {
+        
+                                      if($target->Eventcode == $deal->Eventcode && $target->Employeeid==$deal->Empid)
+                                      {
+                                          $achieved = $achieved+$deal->Dealvalue;
 
-        //$userData['dayleft']=$deal->Eventname;
-        $key++;
+                                      }
+                    }
+
+                              $userData[$key]['achieved']=$achieved;
+                              $userData[$key]['variance']=$achieved-$target->Targetvalue;
+                              $userData[$key]['cur']= $target->Currency;
+                              $key++; 
 }
       
       return View('targetmodule/assigntarget')->with(array('categories'=>$categories,'employee'=>$employee,'userdata'=>$userData,'targets'=>$targets,'eventtable'=> $categories ));
     }
      
    public function postTargetassign( Request $request ) {
- $rules = array(
-        'employeeid'=>'required',
-        'eventname'=>'required',
-        'target_value'=>'required',
-        'target_date'=>'required',
-        'currency'=>'required',
-        'modeoftarget'=>'required'
+                                     $rules = array(
+                                            'employeeid'=>'required',
+                                            'eventname'=>'required',
+                                            'target_value'=>'required',
+                                            'target_date'=>'required',
+                                            'currency'=>'required',
+                                            'modeoftarget'=>'required'
 
-      );
+                                          );
 
     $validator = Validator::make(Input::all(), $rules);
 

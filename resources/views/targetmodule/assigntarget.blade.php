@@ -331,7 +331,7 @@ $('.employee').click(function(e) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">×</button>
-                            <h3>Edit Employee</h3>
+                            <h3>Edit Target</h3>
                         </div>
                         <form action="{{ url('/updatetargetassign/updatetargetassign') }}" method="post"  enctype="multipart/form-data">
                            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
@@ -342,8 +342,8 @@ $('.employee').click(function(e) {
                               <tr><td>Event Name</td><td><input type="text" class="form-control" name="eventname" id="eventname" value="" disabled/></td></tr>
                               <tr><td>Emp Id</td><td><input type="text" class="form-control" name="employeeid" id="employeeid" value="" disabled/></td></tr>
                              <tr><td>Target Assigned</td><td><input type="text" class="form-control " name="targetvalue" id="targetvalue" value=""/></td></tr>
-                               <tr><td>Date Of Assign</td><td><input type="text" class="form-control dob" name="dateofassign" id="dateofassign" value="" /></td></tr>
-                                  <tr><td>Due Date for Completion</td><td><input type="text" class="form-control " name="duedate" id="duedate" value=""/></td></tr>
+                               <tr><td>Date Of Assign</td><td><input type="text" class="form-control " name="dateofassign" id="dateofassign" value="" disabled/></td></tr>
+                                  <tr><td>Due Date for Completion</td><td><input type="text" class="form-control dob" name="duedate" id="duedate" value=""/></td></tr>
                              </table>
                         </div>
                         <div class="modal-footer">
@@ -381,7 +381,9 @@ $('.employee').click(function(e) {
               
             });
 </script>
- 
+ <style>
+.datepicker{z-index:1151 !important;}
+</style>
         <script src="{{asset('/datepicker/js/bootstrap-datepicker.js')}}"></script>
         <link rel="stylesheet" href="{{asset('/datepicker/css/datepicker.css')}}">
 
