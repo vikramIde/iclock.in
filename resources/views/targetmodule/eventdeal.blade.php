@@ -21,11 +21,11 @@
                              <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
       <?php if(Auth::User()->role==''){ ?>                          
-   <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><span> Dashboard</span></a>
+   <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
-                                     <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/eventdeal')}}"><span>Update New Deal</span></a>
+                                     <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/eventdeal')}}"><i class="fa fa-pencil-square-o"></i><span> Update New Deal</span></a>
                                     </li>
-                                     <li><a class="ajax-link" href="{{ URL::to('targetmodule/variancecard')}}"><span> Variance Card</span></a>
+                                     <li><a class="ajax-link" href="{{ URL::to('targetmodule/variancecard')}}"><i class="fa fa-line-chart"></i><span> Variance Card</span></a>
                                     </li>
                                     <?php } ?>
               

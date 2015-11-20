@@ -24,11 +24,11 @@
                              <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
                                 <?php if(Auth::User()->role==''){ ?>                          
-                                    <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><span> Dashboard</span></a>
+                                    <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><i class="fa fa-tachometer"></i><span><span> Dashboard</span></a>
                                     </li>
-                                     <li ><a class="ajax-link" href="{{ URL::to('targetmodule/eventdeal')}}"><span> Update New Deal</span></a>
+                                     <li ><a class="ajax-link" href="{{ URL::to('targetmodule/eventdeal')}}"><i class="fa fa-pencil-square-o"></i><span> Update New Deal</span></a>
                                     </li>
-                                        <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/variancecard')}}"><span> Variance Card</span></a>
+                                        <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/variancecard')}}"><i class="fa fa-line-chart"></i><span> Variance Card</span></a>
                                     </li>
                                     <?php } ?>
               
@@ -136,7 +136,21 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-cash fa-3x"></i>
+                                  <?php
+                                  if( $varidata->Currency=='INR'){?>
+                                  <i class="fa fa-inr fa-3x"></i>
+
+                                  <?php
+                                }else if( $varidata->Currency=='USD') {?>
+                                 <i class="fa fa-usd fa-3x"></i>
+
+                                  <?php
+                                }else {
+                                ?>
+                                 <i class="fa fa-euro fa-3x"></i>
+                                <?php
+                              }
+                              ?>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"></div>
@@ -179,8 +193,9 @@
                 </div>
                      <div class="col-lg-3 col-md-6" >
                     <div class="panel panel-warning" style="border:none">
-                    <button class="btn btn-view " style="margin-right:5px">Target Date : <?php echo $targetdate ?></button><p>&nbsp;</p>
-                    <button class="btn btn-warning ">Event Date : <?php echo $eventdate ?></button>
+                        <button class="btn btn-warning "> Target Assigned Date : <?php echo $eventdate ?></button><p>&nbsp;</p>
+                    <button class="btn btn-info " style="margin-right:5px">Due date for Completion  : <?php echo $targetdate ?></button>
+                  
                     </div>
                 </div>
        
@@ -296,8 +311,8 @@
            
                }
            // Here are the two dates to compare
-              var date1 = '<?php echo $targetdate ?>';
-              var date2 = '<?php echo $eventdate ?>';
+              var date2= '<?php echo $targetdate ?>';
+              var date1 = '<?php echo $eventdate ?>';
               var Targetvalue = parseFloat("<?php echo $Targetvalue ;?>");
               var dealjson = '<?php echo $dealjson ; ?>';
                 
@@ -345,7 +360,7 @@
         $('#test').click(function () {
 
               date1_week= date1;
-			  alert(date1_week.getUTCMonth());
+			  // alert(date1_week.getUTCMonth());
               date2_week= date2;
               var x_axis = [];
               var Target =[];

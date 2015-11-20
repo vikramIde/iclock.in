@@ -22,9 +22,9 @@
                                   <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
       <?php if(Auth::User()->role=='admin1'){ ?>                          
-   <li ><a class="ajax-link" href="{{ URL::to('home1') }}"><i class="glyphicon"></i><span> Dashboard</span></a>
+   <li ><a class="ajax-link" href="{{ URL::to('home1') }}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
-    <li class="active"><a class="ajax-link" href="{{URL::to('dealsclosed')}}"><i class="glyphicon"></i><span> Deals Closed</span></a>
+    <li class="active"><a class="ajax-link" href="{{URL::to('dealsclosed')}}"><i class="fa fa-thumbs-o-up"></i><span> Deals Closed</span></a>
                                     </li>
                                     <?php } ?>
  <?php if(Auth::User()->role=='super admin'){ ?>
@@ -116,7 +116,7 @@
         <td>{{$val->Empid}}</td>
        
          
-            <td><a href="{{ URL::to('createinvoice', array('dealid' => $val->Id)) }}" class="btn btn-view">Create Invoice</a></td>
+            <td><a href="{{ URL::to('createinvoice', array('dealid' => $val->Id)) }}" class="btn btn-view"> <i class="fa fa-plus"></i> Create Invoice</a></td>
             
 
        

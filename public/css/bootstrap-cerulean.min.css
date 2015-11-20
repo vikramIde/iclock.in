@@ -3070,14 +3070,15 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
     border-radius:4px 4px 0 0
 }
 .nav-tabs>li>a:hover {
-    border-color:#eeeeee #eeeeee #dddddd
+     border-top: 2px solid #f69c55;
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
     color:#555555;
     background-color:#ffffff;
     border:1px solid #dddddd;
     border-bottom-color:transparent;
-    cursor:default
+    cursor:default;
+    border-top: 2px solid #f69c55;
 }
 .nav-tabs.nav-justified {
     width:100%;

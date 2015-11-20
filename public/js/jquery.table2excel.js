@@ -5,7 +5,7 @@
 
     defaults = {
         exclude: ".noExl",
-                name: "Table2Excel"
+                name: "excel"
     };
 
     // The actual plugin constructor
@@ -131,7 +131,7 @@
     };
 
     function getFileName(settings) {
-        return ( settings.filename ? settings.filename : "table2excel") + ".xls";
+        return ( settings.filename ? settings.filename : "excel") + ".xls";
     }
 
     $.fn[ pluginName ] = function ( options ) {

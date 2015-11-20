@@ -14,11 +14,11 @@
             <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
       <?php if(Auth::User()->role=='admin2'){ ?>                          
-   <li class="active"><a class="ajax-link" ><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+   <li class="active"><a class="ajax-link" ><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
                                     <?php } ?>
  <?php if(Auth::User()->role=='super admin'){ ?>
-     <li ><a class="ajax-link" href="{{ URL::to('home')}}"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+     <li ><a class="ajax-link" href="{{ URL::to('home')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
                                    
  <li><a class="ajax-link" href="{{ URL::to('reports')}}"><i
@@ -115,7 +115,7 @@
         </td>
                                                                  <td class="center">
            <a class="btn btn-info" target="_blank" href="{{ URL::to('viewinvoice', array('order_id' => $invn->Id)) }}">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+                   <i class="fa fa-eye"></i>
                 View
             </a>
             <?php
@@ -165,12 +165,12 @@
                                                                   <tr>
                                                                   
                                                                   <td>{{$inv->Id}}</td>
-                                                                  <td style="width:120px">{{$inv->Companyname}}</td>
-                                                                  <td style="width:120px">{{$inv->EventName}}</td>
-                                                                  <td style="width:120px">{{$inv->RepresentativeNo}}</td>
-                                                                  <td style="width:120px">{{$inv->GrandTotal}}</td>
-                                                                  <td style="width:120px">{{$inv->CurrencyType}}</td>
-                                                                  <td class="center" style="width:120px">
+                                                                  <td style="width:200px">{{$inv->Companyname}}</td>
+                                                                  <td style="width:200px">{{$inv->EventName}}</td>
+                                                                  <td >{{$inv->RepresentativeNo}}</td>
+                                                                  <td >{{$inv->GrandTotal}}</td>
+                                                                  <td >{{$inv->CurrencyType}}</td>
+                                                                  <td class="center" >
             <?php
                                                         if($inv->Status =='1') {?>
                                               <span class="label-success label label-default">Approved</span>
@@ -187,7 +187,7 @@
         </td>
          <td class="center">
            <a class="btn btn-info" target="_blank" href="{{ URL::to('viewinvoice', array('order_id' => $inv->Id)) }}">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+                   <i class="fa fa-eye"></i>
                 View
             </a>
             <?php
