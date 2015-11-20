@@ -22,7 +22,7 @@
                             <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
       <?php if(Auth::User()->role=='collector'){ ?>                          
-                              <li ><a class="ajax-link" href="{{ URL::to('collection/home')}}"><span> Dashboard</span></a>
+                              <li ><a class="ajax-link" href="{{ URL::to('collection/home')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
                                     <?php } ?>
               
@@ -97,11 +97,11 @@
                                                   <td>{{$inv->DueDate }} </td>
                                                        <td class="center">
                                                                     <a class="btn btn-view" target="_blank" href="{{ URL::to('viewinvoice', array('order_id' => $inv->Id)) }}">
-                                                                       
+                                                                         <i class="fa fa-eye"></i>
                                                                         View
                                                                             </a> <?php  if($inv->Status =='1') {?>
                                                                     <a href="{{ URL::to('collection/payment', array('order_id' => $inv->Id)) }}"  class="btn btn-info "   id="<?php echo $inv->Id ?>" >
-                                                                      
+                                                                      <i class="fa fa-money"></i> 
                                                                             Recieve
                                                                             </a>
                                                                         <?php
@@ -146,12 +146,12 @@
                                                                   <td>{{$inv->DueDate }} </td>
                                                                   <td class="center">
                                                                     <a class="btn btn-view" target="_blank" href="{{ URL::to('viewinvoice', array('order_id' => $inv->Id)) }}">
-                                                                      
+                                                                        <i class="fa fa-eye"></i>
                                                                         View
                                                                             </a> <?php  if($inv->Status =='1') {?>
                                                                     <a href="{{ URL::to('collection/payment', array('order_id' => $inv->Id)) }}"  class="btn btn-info "   id="<?php echo $inv->Id ?>" >
-                                                                    
-                                                                            Recieve
+                                                                    <i class="fa fa-money"></i>&nbsp;
+                                                                            Receive
                                                                             </a>
                                                                         <?php
                                                                       }

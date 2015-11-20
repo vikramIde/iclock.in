@@ -58,13 +58,13 @@
                             <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
       <?php if(Auth::User()->role=='admin1'){ ?>                          
-   <li class="active"><a class="ajax-link" href="{{ URL::to('home1') }}" ><i class="glyphicon"></i><span> Dashboard</span></a>
+   <li class="active"><a class="ajax-link" href="{{ URL::to('home1') }}" ><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
-    <li ><a class="ajax-link" href="{{URL::to('dealsclosed')}}"><i class="glyphicon"></i><span> Deals Closed</span></a>
+    <li ><a class="ajax-link" href="{{URL::to('dealsclosed')}}"><i class="fa fa-thumbs-o-up"></i><span> Deals Closed</span></a>
                                     </li>
                                     <?php } ?>
  <?php if(Auth::User()->role=='super admin'){ ?>
-     <li ><a class="ajax-link" href="{{ URL::to('home')}}"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+     <li ><a class="ajax-link" href="{{ URL::to('home')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
                                    
  <li><a class="ajax-link" href="{{ URL::to('reports')}}"><i
@@ -200,7 +200,7 @@
                                                                   <td class="center">
                                                                                
                 <a class="btn btn-info employee" data-toggle="modal"  data-target="#myModal" id="action_<?php echo $emp->emp_id ?>"  href="">
-               
+               <i class="fa fa-pencil"></i>
                 Edit
             </a>
             <?php
@@ -322,13 +322,13 @@ $('.empdel').click(function(e) {
         <td>{{$inv->RejectedwithComments}}</td>
                                                                   <td class="center">
                                                                     <a class="btn btn-view" target="_blank" href="{{ URL::to('viewinvoice', array('order_id' => $inv->Id)) }}">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+              <i class="fa fa-eye"></i>
                 View
             </a>
                                                                     <?php
                                                                                if($inv->Status =='1') {?>
                 <a class="btn btn-info viewinvoice" data-toggle="modal"  id="event_<?php echo $inv->Id ?>" data-target="#ViewinvoiceModal">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+              <i class="fa fa-pencil"></i>
                 Edit
             </a>
             <?php
@@ -384,7 +384,7 @@ $('.empdel').click(function(e) {
                                                                               ?>
                                                                                
                 <a class="btn btn-info event" data-toggle="modal"  data-target="#eventModal" id="event_<?php echo $cate->id ?>"  href="">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
+                <i class="fa fa-pencil"></i>
                 Edit
             </a>
             <?php

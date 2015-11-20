@@ -21,13 +21,13 @@
                             <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
       <?php if(Auth::User()->role=='director'){ ?>                          
-  <li ><a class="ajax-link" href="{{URL::to('targetmodule/admin')}}"><span> Dashboard</span></a>
+  <li ><a class="ajax-link" href="{{URL::to('targetmodule/admin')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                      
 
                                     </li>
-                                     <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/assigntarget')}}"><span> Assign Target</span></a>
+                                     <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/assigntarget')}}"><i class="fa fa-check-square"></i><span> Assign Target</span></a>
                                     </li>
-                                     <li><a class="ajax-link" href="{{ URL::to('targetmodule/adduser')}}"><span> Add User</span></a>
+                                     <li><a class="ajax-link" href="{{ URL::to('targetmodule/adduser')}}"><i class="fa fa-plus-square"></i><span> Add User</span></a>
                                     </li>
 
 
@@ -168,8 +168,13 @@
                                         </div>
 
                                          <div class="tab-pane" id="viewall">
-                                        </br>
-                                        <button id="downloadIntermidiate" class="btn btn-success" style="float:right">Download Excel</button>
+                                       
+                                        <table align="right">
+                                          <tr>
+                                            <td>   <button id="downloadIntermidiate" class="btn btn-success">Download Excel</button></td>
+                                          </tr>
+                                        </table>
+                                      </br>
 
                                         <table class="table table-striped table-bordered bootstrap-datatable datatable responsive" id="scorecard">
                                       <thead style="color:#fff;background-color:#000">
@@ -252,11 +257,11 @@
                                               <td class="center">
                                                                                
                 <a class="btn btn-info employee" data-toggle="modal"  data-target="#myModal" id="action_<?php echo $emptarget->Id ?>"  href="">
-              
+                <i class="fa fa-pencil"></i>
                 Edit
             </a>
             <a class="btn btn-warning"href="">
-             
+             <i class="fa fa-print"></i>
                 Print
             </a>
             

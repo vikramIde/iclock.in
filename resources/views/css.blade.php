@@ -66,7 +66,7 @@
 					 <!-- theme selector starts -->
          <div class="btn-group pull-right theme-container animated tada">
                <a href="{{URL::to('/')}}"> <button class="btn btn-default" >
-                    <i class="glyphicon glyphicon-dashboard"></i><span
+                   <i class="fa fa-home"></i><span
                         class="hidden-sm hidden-xs"> Home</span>
                   
                 </button></a>

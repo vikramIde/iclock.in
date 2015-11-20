@@ -50,12 +50,12 @@ foreach ($targets as $target) {
                    $userData[$key]['cur']= $target->Currency;
                 $userData[$key]['targetVal']=$target->Targetvalue;
 
-                  $userData[$key]['start']=$target->created_at;
+                  $userData[$key]['start']=$target->Targetassigned;
                    $userData[$key]['end']=$target->Targetdate;
 
         foreach ($deals as $deal) {
 
-            if($target->Eventname == $deal->Eventname)
+            if($target->Eventname == $deal->Eventname && $target->Employeeid==$deal->Empid)
             {
                 $achieved = $achieved+$deal->Dealvalue;
           }
@@ -89,21 +89,6 @@ foreach ($targets as $target) {
       
         $key++;
 }
-
-// $empdetails=User::where('empid','=',$userid)->with(array('deals'=>function($query) use($userid){ 
-//     $query->where('Empid','=',$userid);})
-// )->with(array('target'=>function($query) use($userid){ 
-//     $query->where('Employeeid','=',$userid);})
-// )->get();
-
-    // $empdetails=User::where('empid','=',$userid)->with('deals')->with('target')->get();
-
-
-// dd($userData);
-
-
-// $deals=Deal::where('Empid',$userid)->get();
-
 
       return View('targetmodule/targethome')->with(array('deals'=>$deals,'userdata'=>$userData,'target'=>$targets,'variancedata'=>$variancedata));
     }
@@ -264,7 +249,7 @@ public function postVariancecard(){
 
         foreach ($deals as $key1=> $deal) {
 
-            if($target->Eventname == $deal->Eventname){
+            if($target->Eventname == $deal->Eventname && $target->Employeeid==$deal->Empid){
                 $achieved = $achieved+$deal->Dealvalue;
                 $dealx[$key1]['dealdate'] = $deal->Dealdate;
                 $dealx[$key1]['cost'] = $deal->Dealvalue;
@@ -275,7 +260,8 @@ public function postVariancecard(){
         $userData[$key]['variance']=$achieved-$target->Targetvalue;
         $userData[$key]['cur']= $target->Currency;
         $date2= strtotime(date('d-m-Y'));
-        $date1=$target->Targetdate;
+        $date1=$target->Targetdate; //due date for completion
+        $date4=$target->Targetassigned; // taget assigned date
         $date3=strtotime($target->Targetdate);
         $diff=$date3-$date2;
         $days=floor($diff/(60*60*24));
@@ -285,7 +271,7 @@ public function postVariancecard(){
   }
     $dealjson = json_encode($dealx);
     // dd($dealjson);
-    return View('targetmodule/variancecard')->with(array('target'=>$targets,'userdata'=>$userData, 'variancedata'=>$variancedata,'eventdate'=>$eventdate,'targetdate'=>$date1,'dealjson'=>$dealjson));
+    return View('targetmodule/variancecard')->with(array('target'=>$targets,'userdata'=>$userData, 'variancedata'=>$variancedata,'eventdate'=>$date4,'targetdate'=>$date1,'dealjson'=>$dealjson));
 
 }
     
