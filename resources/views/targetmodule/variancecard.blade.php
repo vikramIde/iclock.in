@@ -24,7 +24,7 @@
                              <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
                                 <?php if(Auth::User()->role==''){ ?>                          
-                                    <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><i class="fa fa-tachometer"></i><span><span> Dashboard</span></a>
+                                     <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><i class="fa fa-tachometer"></i><span><span> Dashboard</span></a>
                                     </li>
                                      <li ><a class="ajax-link" href="{{ URL::to('targetmodule/eventdeal')}}"><i class="fa fa-pencil-square-o"></i><span> Update New Deal</span></a>
                                     </li>
@@ -136,7 +136,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                  <?php
+                                    <?php
                                   if( $varidata->Currency=='INR'){?>
                                   <i class="fa fa-inr fa-3x"></i>
 
@@ -193,9 +193,8 @@
                 </div>
                      <div class="col-lg-3 col-md-6" >
                     <div class="panel panel-warning" style="border:none">
-                        <button class="btn btn-warning "> Target Assigned Date : <?php echo $eventdate ?></button><p>&nbsp;</p>
-                    <button class="btn btn-info " style="margin-right:5px">Due date for Completion  : <?php echo $targetdate ?></button>
-                  
+                    <button class="btn btn-warning ">Start Date  : <?php echo $targetdate ?></button><p>&nbsp;</p>
+                    <button class="btn btn-info " style="margin-right:5px">End Date  :  <?php echo $eventdate ?> </button>
                     </div>
                 </div>
        
@@ -213,7 +212,7 @@
                                           <div class="col-md-6 weekly">
 
                                           </div>
-                                          <div class="col-md-6">
+                                          <div class="col-md-6  button">
                                             <a href="#weekly" class="btn btn-primary ">See the Graph </a>
                                           </div>
                                           
@@ -311,8 +310,8 @@
            
                }
            // Here are the two dates to compare
-              var date2= '<?php echo $targetdate ?>';
-              var date1 = '<?php echo $eventdate ?>';
+              var date1 = '<?php echo $targetdate ?>';
+              var date2 = '<?php echo $eventdate ?>';
               var Targetvalue = parseFloat("<?php echo $Targetvalue ;?>");
               var dealjson = '<?php echo $dealjson ; ?>';
                 
@@ -360,7 +359,6 @@
         $('#test').click(function () {
 
               date1_week= date1;
-			  // alert(date1_week.getUTCMonth());
               date2_week= date2;
               var x_axis = [];
               var Target =[];
@@ -387,14 +385,15 @@
                   i = i + 1;
                   mWeek = "Week "+ i ;
                   x_axis.push(mWeek);Target.push(TargetPerweek);Achieved.push(achieved);
-                  str = str + "<tr><td>"+ mWeek +"</td><td>"+date1_week.getDate()+"-"+(date1_week.getUTCMonth()+1)+"-"+date1_week.getFullYear()+" - "+next_week.getDate()+"-"+(next_week.getUTCMonth()+1)+"-"+next_week.getFullYear()+"</td><td style='text-align:right'>" + TargetPerweek + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
+                  str = str + "<tr><td>"+ mWeek +"</td><td>"+date1_week.getDate()+"-"+(date1_week.getMonth()+1)+"-"+date1_week.getFullYear()+" - "+next_week.getDate()+"-"+(next_week.getUTCMonth()+1)+"-"+next_week.getFullYear()+"</td><td style='text-align:right'>" + TargetPerweek + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
                   date1_week = next_week;  
               }
 
               str = str + "</table>";
              makeGraph('Weekly Event Sale Report',x_axis,Target,Achieved );
               $('.weekly').html(str);
-
+               $(".button").show();
+           
         });
 
         $('#test1').click(function () {
@@ -429,7 +428,7 @@
                   x_axis.push(mDay);
                   Target.push(TargetPerMonth);
                   Achieved.push(achieved);
-                  str1 = str1 + "<tr><td>"+ mDay +"</td><td>"+date1_month.getDate()+"-"+(date1_month.getUTCMonth()+1)+"-"+date1_month.getFullYear()+" - "+next_month.getDate()+"-"+(next_month.getUTCMonth()+1)+"-"+next_month.getFullYear()+"</td><td style='text-align:right'>" + TargetPerMonth + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
+                  str1 = str1 + "<tr><td>"+ mDay +"</td><td>"+date1_month.getDate()+"-"+(date1_month.getMonth()+1)+"-"+date1_month.getFullYear()+" - "+next_month.getDate()+"-"+(next_month.getUTCMonth()+1)+"-"+next_month.getFullYear()+"</td><td style='text-align:right'>" + TargetPerMonth + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
                   date1_month = next_month;
               }
 
@@ -437,6 +436,7 @@
               makeGraph('Monthly Event Sale Report', x_axis, Target, Achieved);
 
               $('.weekly').html(str1);
+                  $(".button").show();
 
         });
  
@@ -469,13 +469,14 @@ $('#test2').click(function () {
         x_axis.push(mDay);
         Target.push(TargetPerday);
         Achieved.push(achieved);
-        str1 = str1 + "<tr><th>Day " + i + "</th><td>" + date1_day.getDate() + "-" + (date1_day.getUTCMonth() + 1) + "-" + date1_day.getFullYear() + "</td><td style='text-align:right'>" + TargetPerday + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
+        str1 = str1 + "<tr><th>Day " + i + "</th><td>" + date1_day.getDate() + "-" + (date1_day.getMonth() + 1) + "-" + date1_day.getFullYear() + "</td><td style='text-align:right'>" + TargetPerday + "</td><td style='text-align:right'> " + achieved + "</td></tr>";
         date1_day = next_week;
     }
 
     str1 = str1 + "</table>";
     makeGraph('Daily Event Sale Report', x_axis, Target, Achieved);
     $('.weekly').html(str1);
+        $(".button").show();
 
 });
 
@@ -496,5 +497,8 @@ $('#test2').click(function () {
 
             });
          </script>
+         <style type="text/css">
+         .button{ display: none;}
+         </style>
 
 @endsection

@@ -282,7 +282,7 @@ $(function () {
                                                  <h4>Payment comment *</h4>
                                                 <textarea type="text" value="" class="form-control" autocomplete="off"  rows="1" cols="50" name="comment" ></textarea>
                                                
-                                                <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  >
+                                                <input type="hidden" value="<?php  echo $today;  ?>" class="form-control dob"  autocomplete="off" name="date1"  ><p>&nbsp;</p>
                                                 <center>
                                            <input type="submit" class="btn btn-info" value="Submit Payment"></center>
                                            </form> 
