@@ -154,7 +154,6 @@ public function getVariancecard(){
       return View('targetmodule/variancecard')->with(array('dealjson'=>$dealjson,'target'=>$targets,'variancedata'=>$variancedata,'targetdate'=>$targetdate,'eventdate'=>$eventdate));
 }
 
-<<<<<<< HEAD
 public function datediff($interval, $datefrom, $dateto, $using_timestamps = false) {
     /*
     $interval can be:
@@ -242,59 +241,6 @@ public function datediff($interval, $datefrom, $dateto, $using_timestamps = fals
 }
 
 public function postVariancecard(){
-=======
-
-public function postVariancecard(){
-			$empid= Auth::user()->empid;
-			$eventName = Input::get('event');
-			dd('sdsdsad');
-			
-			
-			
-			$targets = Targetassign::where('Employeeid',$empid)->where('Eventname',$eventName)->get();
-			$variancedata=$targets;
-			$deals = Deal::where('Eventname',$eventName)->where('Empid',$empid)->get();
-		
-			$eventDate = Event::where('event',$eventName)->select('date')->get();
-			$userData = array();
-			$key = 0 ;
-		
-		
-			foreach($eventDate as $val)
-			  $eventdate = $val['date'];
-		
-			foreach ($targets as $target) {
-						$achieved = 0;
-						$userData[$key]['event']=$target->Eventname;
-						  $userData[$key]['eventcode']=$target->Eventcode;
-						$userData[$key]['targetVal']=$target->Targetvalue;
-		
-				foreach ($deals as $key1=> $deal) {
-		
-					if($target->Eventname == $deal->Eventname){
-						$achieved = $achieved+$deal->Dealvalue;
-						$dealx[$key1]['dealdate'] = $deal->Dealdate;
-						$dealx[$key1]['cost'] = $deal->Dealvalue;
-				  }
-				}
-		
-				$userData[$key]['achieved']=$achieved;
-				$userData[$key]['variance']=$achieved-$target->Targetvalue;
-				$userData[$key]['cur']= $target->Currency;
-				$date2= strtotime(date('d-m-Y'));
-				$date1=$target->Targetdate;
-				$date3=strtotime($target->Targetdate);
-				$diff=$date3-$date2;
-				$days=floor($diff/(60*60*24));
-				// dd($days); 
-				$userData[$key]['dayleft']=$days;
-				$key++;
-		  }
-			$dealjson = json_encode($dealx);
-			// dd($dealjson);
-			return View('targetmodule/variancecard')->with(array('target'=>$targets,'userdata'=>$userData, 'variancedata'=>$variancedata,'eventdate'=>$eventdate,'targetdate'=>$date1,'dealjson'=>$dealjson));
-
->>>>>>> bd471b1aac83b0229b6e75aaa93d7869638da667
     $empid= Auth::user()->empid;
     $eventName = Input::get('event');
     $targets = Targetassign::where('Employeeid',$empid)->where('Eventname',$eventName)->get();
