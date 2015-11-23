@@ -166,7 +166,6 @@ $(function () {
                                     <i class="fa fa-user fa-3x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"></div>
                                     <div>Sales Representative</div>
                                 </div>
                             </div>
