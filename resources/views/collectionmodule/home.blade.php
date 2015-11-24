@@ -1,4 +1,4 @@
-@extends('css')
+@extends('app')
 
 @section('content')
 <!--clone row-->
@@ -24,6 +24,7 @@
       <?php if(Auth::User()->role=='collector'){ ?>                          
                               <li ><a class="ajax-link" href="{{ URL::to('collection/home')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
+                                  
                                     <?php } ?>
               
 

@@ -19,18 +19,51 @@
 
                             </div>
                             <ul class="nav nav-pills nav-stacked main-menu">
-                                <li class="nav-header">Main</li>
-      <?php if(Auth::User()->role=='director'){ ?>                          
-   <li ><a class="ajax-link" href="{{ URL::to('targetmodule/admin')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
+                               <li class="nav-header">Main</li>
+      <?php if(Auth::User()->role==''){ ?>                          
+                                    <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
+                                    </li>
+                                    <li><a class="ajax-link" href="{{ URL::to('targetmodule/eventdeal')}}"><i class="fa fa-pencil-square-o"></i><span> Update New Deal</span></a>
+                                    </li>
+                                    <li><a class="ajax-link" href="{{ URL::to('targetmodule/variancecard')}}"><i class="fa fa-line-chart"></i><span> Variance Card</span></a>
+                                    </li>
+                                    <li class="active"><a class="ajax-link" href="{{ URL::to('resetpass')}}"><i class="fa fa-undo"></i><span> Reset Password</span></a>
+                                    </li>
+
+                                    <?php } ?>
+              <?php if(Auth::User()->role=='director'){ ?>                          
+                                     <li ><a class="ajax-link" href="{{ URL::to('targetmodule/admin')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
                                      <li><a class="ajax-link" href="{{ URL::to('targetmodule/assigntarget')}}"><i class="fa fa-check-square"></i><span> Assign Target</span></a>
                                     </li>
-                                    <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/assigntarget')}}"><i class="fa fa-plus-square"></i><span> Add User</span></a>
+                                    <li><a class="ajax-link" href="{{ URL::to('targetmodule/assigntarget')}}"><i class="fa fa-plus-square"></i><span> Add User</span></a>
+                                    </li>
+                                    <li class="active"><a class="ajax-link" href="{{ URL::to('resetpass')}}"><i class="fa fa-undo"></i><span> Reset Password</span></a>
                                     </li>
 
 
                                     <?php } ?>
-              
+                                                          
+      <?php if(Auth::User()->role=='admin1'){ ?>                          
+                                    <li ><a class="ajax-link" href="{{ URL::to('home1') }}" ><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
+                                    </li>
+                                    <li ><a class="ajax-link" href="{{URL::to('dealsclosed')}}"><i class="fa fa-thumbs-o-up"></i><span> Deals Closed</span></a>
+                                    </li>
+                                     <li class="active"><a class="ajax-link" href="{{ URL::to('resetpass')}}"><i class="fa fa-undo"></i><span> Reset Password</span></a>
+                                    </li>
+                                    <?php } ?>
+      <?php if(Auth::User()->role=='admin2'){ ?>                          
+                                    <li ><a class="ajax-link" ><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
+                                    </li>
+                                      <li class="active"><a class="ajax-link" href="{{ URL::to('resetpass')}}"><i class="fa fa-undo"></i><span> Reset Password</span></a>
+                                    </li>
+                                    <?php } ?>
+         <?php if(Auth::User()->role=='collector'){ ?>                          
+                                       <li ><a class="ajax-link" href="{{ URL::to('collection/home')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
+                                    </li>
+                                      <li class="active"><a class="ajax-link" href="{{ URL::to('resetpass')}}"><i class="fa fa-undo"></i><span> Reset Password</span></a>
+                                    </li>
+                                    <?php } ?>
 
                             </ul>
 
@@ -55,7 +88,7 @@
                         <div class="box col-md-12">
                             <div class="box-inner homepage-box">
                                 <div class="box-header well">
-                                    <h2><i class="glyphicon glyphicon-th"></i> Add User</h2>
+                                    <h2><i class="glyphicon glyphicon-th"></i> Reset Password </h2>
 </br>
                                 </div>
 
@@ -83,7 +116,7 @@
   </div>
                                 <div class="box-content">
                                     <ul class="nav nav-tabs" id="myTab">
-                                        <li class="active"><a href="#info">Add User</a></li>
+                                        <li class="active"><a href="#info">Reset Password</a></li>
                                          
                                       
                                     </ul>
@@ -91,59 +124,36 @@
                                     <div id="myTabContent" class="tab-content">
                                         <div class="tab-pane active" id="info">
                                         </br>
-                                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/user') }}">
+                                  <form class="form-horizontal" role="form" method="POST" action="{{ url('/reset') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            
 
-            <div class="form-group">
-              <label class="col-md-4 control-label">Name</label>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="name">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label">E-Mail Address</label>
-              <div class="col-md-6">
-                <input type="email" class="form-control" name="email" >
-              </div>
-            </div>
+            
+                <input type="hidden" class="form-control" autocomplete="off" name="userid" value="{{ Auth::user()->id }} ">
+            
 
             <div class="form-group">
               <label class="col-md-4 control-label">Password</label>
               <div class="col-md-6">
-                <input type="password" class="form-control" name="password">
+                <input type="password" class="form-control" autocomplete="off" name="password">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 control-label">Confirm Password</label>
               <div class="col-md-6">
-                <input type="password" class="form-control" name="password_confirmation">
+                <input type="password" class="form-control"  autocomplete="off"name="password_confirmation">
               </div>
             </div>
-            <!-- <div class="form-group">
-              <label class="col-md-4 control-label">Role</label>
-              <div class="col-md-6">
-                <select class="form-control" name="role">
-                  <option value="">--select--</option>
-                  <option value="admin1">admin1</option>
-                  <option value="admin2">admin2</option>
-                  <option value="super admin">Super admin</option>
-                  <option value="director">director</option>
-                  <option value=""></option>
-                </select>
-              </div>
-            </div> -->
 
             <div class="form-group">
               <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
-                  Register
+                  Reset Password
                 </button>
               </div>
             </div>
           </form>
-
                                           
                                         </div>
 
@@ -181,47 +191,6 @@
         </div>
         <!--/.fluid-container-->
 
-        <!-- external javascript -->
-
- 
-        <script src="{{asset('/datepicker/js/bootstrap-datepicker.js')}}"></script>
-        <link rel="stylesheet" href="{{asset('/datepicker/css/datepicker.css')}}">
-
-        <script type="text/javascript">
-           
-              $(document).ready(function() {
-
-
-                $('.dob').datepicker({
-                    format: 'dd-mm-yyyy',
-                    startDate: '-0m',
-                    autoclose: true
-
-                });
-
-                $('.dp').on('change', function() {
-                    $('.datepicker').hide();
-                });
-
-
-            });
-        </script>
-      
-        <style type="text/css">
-            .report {
-                padding: 20px;
-                display: none;
-                margin-top: 20px;
-                border: 1px solid #000;
-            }
-            
-            .price {
-                padding: 20px;
-                display: none;
-                margin-top: 50px;
-                border: 1px solid #000;
-            }
-        </style>
-
+        
    
 @endsection

@@ -13,6 +13,7 @@ use App\User;
 use App\Employee;
 use App\Invoice;
 use App\Adduser;
+ use Hash;
 
 class AddUserController extends Controller
 {
@@ -56,5 +57,45 @@ $role='';
 
 
     }
+
+    public function getResetpass( Request $request){
+
+            return view('resettargetpassword');
+}
+   public function postReset( Request $request ) {
+         $rules = array(
+                  'password' => 'required|confirmed'
+                  // 'password_confirmation' => 'required|confirmed'
+
+              );
+
+    $validator = Validator::make(Input::all(), $rules);
+
+    if ($validator->fails())
+    {
+        return view('resettargetpassword')->withErrors($validator);
+    }else {
+       $userid=Input::get('userid');
+
+  $post = Input::get();
+  $pass=\Hash::make( $post['password']);
+$i=User::where('id',$userid)
+            ->update(array(
+              'password' => $pass)
+             
+            );
+            if($i>0){
+              $request->session()->flash('alert-success', 'Updated Success!');
+              return view('resettargetpassword');
+ 
+            }
+
+   
+ 
+        
+    }   
+       
+    
+}
 
 }

@@ -1,4 +1,4 @@
-@extends('css')
+@extends('app')
 
 @section('content')
 <!--clone row-->

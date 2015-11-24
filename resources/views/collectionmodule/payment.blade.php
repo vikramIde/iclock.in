@@ -1,4 +1,4 @@
-@extends('css')
+@extends('app')
 
 @section('content')
 <?php $totalPayment=0 ; $totalAdjustment=0;?>
@@ -50,12 +50,14 @@ $(function () {
 
                             </div>
                             <ul class="nav nav-pills nav-stacked main-menu">
-                                <li class="nav-header">Main</li>                         
+                                <li class="nav-header">Main</li> 
+                                      <?php if(Auth::User()->role=='collector'){ ?>                         
    <li ><a class="ajax-link" href="{{ URL::to('collection/home')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
      <li class="active"><a class="ajax-link" href="{{ URL::to('collection/payment/$id')}}"><i class="fa fa-money"></i><span> Receive Payment</span></a>
                                     </li>
-                               
+                                 
+                                   <?php } ?>
 
                             </ul>
                            

@@ -16,6 +16,7 @@
       <?php if(Auth::User()->role=='admin2'){ ?>                          
    <li class="active"><a class="ajax-link" ><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
+                                    
                                     <?php } ?>
  <?php if(Auth::User()->role=='super admin'){ ?>
      <li ><a class="ajax-link" href="{{ URL::to('home')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>

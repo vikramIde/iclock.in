@@ -1,4 +1,4 @@
-@extends('css')
+@extends('app')
 
 @section('content')
 <!--clone row-->
@@ -202,7 +202,9 @@
 
                                            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive" >
                                               
-                                              <tr><td><button id="test" class="btn btn-primary " style="margin-right:5px">See Weekly Report</button><button id="test1" class="btn btn-primary " style="margin-right:5px">See Monthly Report</button><button id="test2" class="btn btn-primary " style="margin-right:5px">See Daily Report</button></td></tr>
+                                              <tr><td><button id="test" class="btn btn-report" style="margin-right:5px">See Weekly Report</button>
+                                                <button id="test1" class="btn btn-report" style="margin-right:5px">See Monthly Report</button>
+                                                <button id="test2" class="btn btn-report" style="margin-right:5px">See Daily Report</button></td></tr>
 
                                                @endforeach
                                               </table>

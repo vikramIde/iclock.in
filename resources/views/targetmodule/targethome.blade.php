@@ -1,4 +1,4 @@
-@extends('css')
+@extends('app')
 
 @section('content')
 <!--clone row-->
@@ -28,11 +28,12 @@
                                     </li>
                                     <li><a class="ajax-link" href="{{ URL::to('targetmodule/variancecard')}}"><i class="fa fa-line-chart"></i><span> Variance Card</span></a>
                                     </li>
+                                  
                                     <?php } ?>
               
 
                             </ul>
-                           
+
                         </div>
                     </div>
                 </div>

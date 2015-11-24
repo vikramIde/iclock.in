@@ -84,6 +84,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
+                      <li ><a class="ajax-link" href="{{ URL::to('resetpass')}}"><i class="fa fa-undo"></i><span> Reset Password</span></a>
+                                    </li>
 
                       <li><a href="{{ url('main/logout') }}">Logout</a></li>
                     </ul>

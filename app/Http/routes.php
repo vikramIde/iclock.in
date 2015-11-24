@@ -68,10 +68,13 @@ Route::controller('targetassign','AssigntargetController');
 Route::controller('updatetargetassign','AssigntargetController');
 Route::controller('updateadmin','AdminController');
 // Route::post('variancecard','TargetController@variancecard');
+Route::controller('updateadmin','AdminController');
 
 Route::get('targetmodule/variancecard','TargetController@getVariancecard');
 
 Route::post('targetmodule/variancecard','TargetController@postVariancecard');
+Route::get('resetpass','AddUserController@getResetpass');
+Route::post('/reset','AddUserController@postReset');
 
 
 Route::get('targetmodule/logout',function(){
@@ -91,5 +94,6 @@ Route::controller('collection','CollectionController');
 Route::get('main/logout',function(){
 	Session::flush();
 	Auth::logout();
+	session()->flash('alert-success', 'Success logged out');
 	return Redirect::to('/');
 });

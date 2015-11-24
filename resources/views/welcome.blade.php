@@ -1,5 +1,4 @@
 @extends('app')
-
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -21,6 +20,16 @@
                             </ul>
                         </div>
                     @endif
+
+                     <div class="flash-message">
+
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div>
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ action('LoginController@postLogin') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -53,7 +62,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>   &nbsp;Login</button>
 
-                                <!-- <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a> -->
+                                <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
                             </div>
                         </div>
                     </form>
