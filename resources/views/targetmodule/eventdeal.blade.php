@@ -20,7 +20,7 @@
                             </div>
                              <ul class="nav nav-pills nav-stacked main-menu">
                                 <li class="nav-header">Main</li>
-      <?php if(Auth::User()->role==''){ ?>                          
+      <?php if(Auth::User()->role=='sales'){ ?>                          
    <li ><a class="ajax-link" href="{{ URL::to('targetmodule/targethome')}}"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
                                     </li>
                                      <li class="active"><a class="ajax-link" href="{{ URL::to('targetmodule/eventdeal')}}"><i class="fa fa-pencil-square-o"></i><span> Update New Deal</span></a>

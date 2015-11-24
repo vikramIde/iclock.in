@@ -39,6 +39,9 @@
 								<button type="submit" class="btn btn-primary">
 									Send Password Reset Link
 								</button>
+								<a href="{{ URL::to('/')}}" class="btn btn-primary">
+									Go Back to Login
+								</a>
 							</div>
 						</div>
 					</form>

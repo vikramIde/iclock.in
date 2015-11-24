@@ -77,7 +77,7 @@ class LoginController extends Controller
             
         }  
          else 
-        if (Auth::attempt($cred) && $role->role == ''){
+        if (Auth::attempt($cred) && $role->role == 'sales'){
             if (Auth::check()){
                 Session::put('role','');
                 Session::put('name',Auth::user()->name);
